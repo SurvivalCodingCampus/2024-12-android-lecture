@@ -1,10 +1,13 @@
 package com.surivalcoding.winterandroidstudy.day02
 
+import android.graphics.drawable.ColorDrawable
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.size
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.toArgb
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalInspectionMode
 import androidx.compose.ui.res.painterResource
@@ -31,7 +34,7 @@ fun IngredientItem(
                 .size(100.dp),
             contentScale = ContentScale.Crop,
             model = if (LocalInspectionMode.current) {
-                R.drawable.ic_launcher_background
+                ColorDrawable(Color.Red.toArgb())
             } else {
                 ingredient.imageUrl
             },
