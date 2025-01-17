@@ -1,5 +1,6 @@
 package com.surivalcoding.winterandroidstudy.day03.presentation.counter
 
+import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelProvider.AndroidViewModelFactory.Companion.APPLICATION_KEY
@@ -12,6 +13,17 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
+
+class TestViewModel(
+    private val state: SavedStateHandle,
+): ViewModel() {
+
+    fun load() {
+        state.get<Int>("count")
+
+        state["count"] = 10
+    }
+}
 
 // Factory
 class CounterViewModel(

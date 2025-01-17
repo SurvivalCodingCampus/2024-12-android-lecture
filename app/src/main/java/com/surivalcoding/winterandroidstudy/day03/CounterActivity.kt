@@ -8,12 +8,15 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import com.surivalcoding.winterandroidstudy.day03.presentation.counter.CounterScreen
 import com.surivalcoding.winterandroidstudy.day03.presentation.counter.CounterViewModel
+import com.surivalcoding.winterandroidstudy.day03.presentation.counter.TestViewModel
 import com.surivalcoding.winterandroidstudy.ui.theme.WinterAndroidStudyTheme
 
 class CounterActivity : ComponentActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        val testViewModel: TestViewModel by viewModels()
 
         // 범용
         val viewModel: CounterViewModel by viewModels {
