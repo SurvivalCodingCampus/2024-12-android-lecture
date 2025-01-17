@@ -13,16 +13,23 @@ class CounterActivity : ComponentActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        val viewModel: CounterViewModel by viewModels()
+
+        // 범용
+        val viewModel: CounterViewModel by viewModels {
+            CounterViewModel.Factory
+        }
 
         setContent {
             WinterAndroidStudyTheme {
+                // 컴포즈 전용
+//                val viewModel: CounterViewModel = viewModel(
+//                    factory = CounterViewModel.Factory
+//                )
+
                 val count by viewModel.count
                 CounterScreen(
                     count = count,
-                    onClick = {
-                        viewModel.increase()
-                    }
+                    onClick = viewModel::increase,
                 )
             }
         }
