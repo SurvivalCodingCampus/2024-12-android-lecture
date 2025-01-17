@@ -1,27 +1,33 @@
 package com.surivalcoding.winterandroidstudy.day03.presentation.counter
 
-import androidx.compose.runtime.MutableState
-import androidx.compose.runtime.State
-import androidx.compose.runtime.mutableIntStateOf
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelProvider.AndroidViewModelFactory.Companion.APPLICATION_KEY
 import androidx.lifecycle.createSavedStateHandle
+import androidx.lifecycle.viewModelScope
 import androidx.lifecycle.viewmodel.CreationExtras
 import com.surivalcoding.winterandroidstudy.day03.AppApplication
 import com.surivalcoding.winterandroidstudy.day03.data.repository.NumberRepository
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.launch
 
 // Factory
 class CounterViewModel(
     private val numberRepository: NumberRepository,
 ) : ViewModel() {
 
-    private val _count: MutableState<Int> = mutableIntStateOf(numberRepository.getNumber())
-    val count: State<Int> = _count
+    private val _count: MutableStateFlow<Int> = MutableStateFlow(numberRepository.getNumber())
+    val count: StateFlow<Int> = _count.asStateFlow()
 
     fun increase() {
         numberRepository.increaseNumber()
-        _count.value = numberRepository.getNumber()
+//        _count.value = numberRepository.getNumber()
+
+        viewModelScope.launch {
+            _count.emit(numberRepository.getNumber())
+        }
     }
 
     companion object {
