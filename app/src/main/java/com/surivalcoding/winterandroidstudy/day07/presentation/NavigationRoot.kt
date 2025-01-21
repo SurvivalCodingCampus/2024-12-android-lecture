@@ -86,7 +86,7 @@ private fun NavGraphBuilder.authGraph(navHostController: NavHostController) {
             )
         }
         composable<Route.BottomNav> {
-            BottomNavigationScreen(navHostController)
+            BottomNavigationScreen()
         }
     }
 }
