@@ -13,6 +13,7 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.navigation
 import com.surivalcoding.winterandroidstudy.day07.presentation.a.MainScreen
 import com.surivalcoding.winterandroidstudy.day07.presentation.b.SignInScreen
+import com.surivalcoding.winterandroidstudy.day07.presentation.bottomnav.BottomNavigationScreen
 import com.surivalcoding.winterandroidstudy.day07.presentation.c.SignUpScreen
 import com.surivalcoding.winterandroidstudy.day07.presentation.c.SignUpViewModel
 import kotlinx.serialization.Serializable
@@ -29,6 +30,9 @@ sealed interface Route {
 
     @Serializable
     data class SignUp(val id: Int) : Route
+
+    @Serializable
+    data object BottomNav : Route
 }
 
 @Composable
@@ -72,7 +76,17 @@ private fun NavGraphBuilder.authGraph(navHostController: NavHostController) {
 
             SignUpScreen(
                 state = state,
+                modifier = Modifier.clickable {
+                    navHostController.navigate(Route.BottomNav) {
+                        popUpTo(Route.Main) {
+                            inclusive = true
+                        }
+                    }
+                }
             )
+        }
+        composable<Route.BottomNav> {
+            BottomNavigationScreen(navHostController)
         }
     }
 }

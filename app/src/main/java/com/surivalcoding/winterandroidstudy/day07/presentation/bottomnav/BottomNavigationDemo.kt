@@ -18,17 +18,18 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.lifecycle.ViewModel
-import androidx.navigation.NavController
 import androidx.navigation.NavDestination.Companion.hasRoute
 import androidx.navigation.NavDestination.Companion.hierarchy
+import androidx.navigation.NavHostController
+import androidx.navigation.compose.NavHost
+import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
 import kotlinx.serialization.Serializable
 
 
 @Composable
 fun BottomNavigationScreen(
-    navController: NavController,
+    navController: NavHostController,
     modifier: Modifier = Modifier,
 ) {
     Scaffold(
@@ -84,33 +85,28 @@ fun BottomNavigationScreen(
             }
         }
     ) {
-        Column(
-            modifier = Modifier.padding(it)
+        NavHost(
+            navController = navController,
+            modifier = modifier.padding(it),
+            startDestination = Route.Home,
         ) {
-
+            composable<Route.Home> {
+                HomeScreen()
+            }
+            composable<Route.Second> {
+                SecondScreen()
+            }
+            composable<Route.Third> {
+                ThirdScreen()
+            }
+            composable<Route.Fourth> {
+                FourthScreen()
+            }
         }
-//        NavHost(
-//            navController,
-//            modifier = modifier.padding(it),
-//            startDestination = Route.Home,
-//        ) {
-//            composable<Route.Home> {
-//                HomeScreen()
-//            }
-//            composable<Route.Second> {
-//                SecondScreen()
-//            }
-//            composable<Route.Third> {
-//                ThirdScreen()
-//            }
-//            composable<Route.Fourth> {
-//                FourthScreen()
-//            }
-//        }
     }
 }
 
-sealed interface Route {
+private sealed interface Route {
     @Serializable
     data object Home : Route
 
@@ -170,9 +166,4 @@ fun FourthScreen(modifier: Modifier = Modifier) {
     ) {
         Text("Fourth")
     }
-}
-
-
-class BottomNavigationViewModel : ViewModel() {
-
 }

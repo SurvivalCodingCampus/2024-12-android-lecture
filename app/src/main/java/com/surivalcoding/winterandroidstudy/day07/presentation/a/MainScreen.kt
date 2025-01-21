@@ -23,38 +23,6 @@ import androidx.compose.ui.unit.sp
 fun MainScreen(modifier: Modifier = Modifier) {
     Scaffold(
         modifier = modifier.systemBarsPadding(),
-        bottomBar = {
-            BottomNavigation {
-                BottomNavigationItem(
-                    icon = { Icon(Icons.Filled.Favorite, contentDescription = null) },
-                    selected = false,
-                    onClick = {
-
-                    },
-                )
-                BottomNavigationItem(
-                    icon = { Icon(Icons.Filled.Add, contentDescription = null) },
-                    selected = false,
-                    onClick = {
-
-                    },
-                )
-                BottomNavigationItem(
-                    icon = { Icon(Icons.Filled.Home, contentDescription = null) },
-                    selected = false,
-                    onClick = {
-
-                    },
-                )
-                BottomNavigationItem(
-                    icon = { Icon(Icons.Filled.Favorite, contentDescription = null) },
-                    selected = false,
-                    onClick = {
-
-                    },
-                )
-            }
-        }
     ) { innerPadding ->
         Box(
             modifier = modifier
