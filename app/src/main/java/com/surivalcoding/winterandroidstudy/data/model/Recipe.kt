@@ -1,4 +1,4 @@
-package com.surivalcoding.winterandroidstudy.day04.data.model
+package com.surivalcoding.winterandroidstudy.data.model
 
 data class Recipe(
     val title: String,

@@ -6,8 +6,8 @@ import androidx.lifecycle.ViewModelProvider.AndroidViewModelFactory.Companion.AP
 import androidx.lifecycle.viewModelScope
 import androidx.lifecycle.viewmodel.CreationExtras
 import com.surivalcoding.winterandroidstudy.day04.RecipeApplication
-import com.surivalcoding.winterandroidstudy.day04.data.model.Recipe
-import com.surivalcoding.winterandroidstudy.day04.data.repository.RecipeRepository
+import com.surivalcoding.winterandroidstudy.data.model.Recipe
+import com.surivalcoding.winterandroidstudy.data.repository.RecipeRepository
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow

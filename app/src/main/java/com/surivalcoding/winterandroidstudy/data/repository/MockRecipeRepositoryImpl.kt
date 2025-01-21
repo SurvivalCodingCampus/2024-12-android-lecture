@@ -1,6 +1,6 @@
-package com.surivalcoding.winterandroidstudy.day04.data.repository
+package com.surivalcoding.winterandroidstudy.data.repository
 
-import com.surivalcoding.winterandroidstudy.day04.data.model.Recipe
+import com.surivalcoding.winterandroidstudy.data.model.Recipe
 
 class MockRecipeRepositoryImpl : RecipeRepository {
     override suspend fun getSavedRecipes(): List<Recipe> {
