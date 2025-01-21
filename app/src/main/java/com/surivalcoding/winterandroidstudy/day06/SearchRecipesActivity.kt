@@ -1,5 +1,6 @@
 package com.surivalcoding.winterandroidstudy.day06
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -23,10 +24,18 @@ class SearchRecipesActivity : ComponentActivity() {
                 SearchRecipesScreen(
                     state = state,
                     onQueryChange = {
-                        viewModel.fetchRecipes(it)
+//                        viewModel.fetchRecipes(it)
+                        Intent()
                     }
                 )
             }
         }
     }
+}
+
+
+class B(
+    private val id: Int
+) {
+
 }
