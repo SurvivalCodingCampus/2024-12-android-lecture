@@ -21,6 +21,9 @@ import kotlinx.serialization.Serializable
 @Serializable
 data object AuthGraph
 
+@Serializable
+data object MainGraph
+
 sealed interface Route {
     @Serializable
     data object Main : Route
@@ -38,10 +41,11 @@ sealed interface Route {
 @Composable
 fun NavigationRoot(
     navController: NavHostController,
+    isLogin: Boolean,
 ) {
     NavHost(
         navController = navController,
-        startDestination = AuthGraph,
+        startDestination = if (isLogin) MainGraph else AuthGraph,
     ) {
         authGraph(navController)
     }
@@ -54,14 +58,22 @@ private fun NavGraphBuilder.authGraph(navHostController: NavHostController) {
         composable<Route.Main> {
             MainScreen(
                 modifier = Modifier.clickable {
-                    navHostController.navigate(Route.SignIn)
+                    navHostController.navigate(Route.SignIn) {
+                        popUpTo<Route.Main> {
+                            inclusive = true
+                        }
+                    }
                 }
             )
         }
         composable<Route.SignIn> {
             SignInScreen(
                 modifier = Modifier.clickable {
-                    navHostController.navigate(Route.SignUp(id = 1))
+                    navHostController.navigate(Route.SignUp(id = 1)) {
+                        popUpTo<Route.SignIn> {
+                            inclusive = true
+                        }
+                    }
                 }
             )
         }
@@ -78,7 +90,7 @@ private fun NavGraphBuilder.authGraph(navHostController: NavHostController) {
                 state = state,
                 modifier = Modifier.clickable {
                     navHostController.navigate(Route.BottomNav) {
-                        popUpTo(Route.Main) {
+                        popUpTo<Route.SignUp> {
                             inclusive = true
                         }
                     }

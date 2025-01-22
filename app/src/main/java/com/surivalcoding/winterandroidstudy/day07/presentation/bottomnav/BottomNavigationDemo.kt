@@ -4,6 +4,7 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.systemBarsPadding
 import androidx.compose.material.BottomNavigation
 import androidx.compose.material.BottomNavigationItem
 import androidx.compose.material.Icon
@@ -11,13 +12,14 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
 import androidx.compose.material.icons.filled.Call
 import androidx.compose.material.icons.filled.Done
-import androidx.compose.material.icons.filled.Home
+import androidx.compose.material.icons.outlined.Home
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.navigation.NavDestination.Companion.hasRoute
 import androidx.navigation.NavDestination.Companion.hierarchy
 import androidx.navigation.compose.NavHost
@@ -34,17 +36,24 @@ fun BottomNavigationScreen(
     val navController = rememberNavController()
 
     Scaffold(
-        modifier = Modifier.fillMaxSize(),
+        modifier = Modifier
+            .fillMaxSize()
+            .systemBarsPadding(),
         bottomBar = {
-            BottomNavigation {
+            BottomNavigation(
+                backgroundColor = Color.White,
+            ) {
                 val navBackStackEntry by navController.currentBackStackEntryAsState()
                 val currentDestination = navBackStackEntry?.destination
                 BottomNavigationItem(
-                    icon = { Icon(Icons.Filled.Home, contentDescription = null) },
+                    icon = { Icon(Icons.Outlined.Home, contentDescription = null) },
                     label = { Text("Home") },
                     selected = currentDestination?.hierarchy?.any { it.hasRoute(Route.Home::class) } == true,
                     onClick = {
                         navController.navigate(Route.Home) {
+                            popUpTo<Route.Home> {
+                                inclusive = true
+                            }
                             launchSingleTop = true
                             restoreState = true
                         }
@@ -56,6 +65,10 @@ fun BottomNavigationScreen(
                     selected = currentDestination?.hierarchy?.any { it.hasRoute(Route.Second::class) } == true,
                     onClick = {
                         navController.navigate(Route.Second) {
+                            popUpTo<Route.Home> {
+                                inclusive = true
+                                saveState = true
+                            }
                             launchSingleTop = true
                             restoreState = true
                         }
@@ -67,6 +80,10 @@ fun BottomNavigationScreen(
                     selected = currentDestination?.hierarchy?.any { it.hasRoute(Route.Third::class) } == true,
                     onClick = {
                         navController.navigate(Route.Third) {
+                            popUpTo<Route.Home> {
+                                inclusive = true
+                                saveState = true
+                            }
                             launchSingleTop = true
                             restoreState = true
                         }
@@ -78,6 +95,10 @@ fun BottomNavigationScreen(
                     selected = currentDestination?.hierarchy?.any { it.hasRoute(Route.Fourth::class) } == true,
                     onClick = {
                         navController.navigate(Route.Fourth) {
+                            popUpTo<Route.Home> {
+                                inclusive = true
+                                saveState = true
+                            }
                             launchSingleTop = true
                             restoreState = true
                         }
