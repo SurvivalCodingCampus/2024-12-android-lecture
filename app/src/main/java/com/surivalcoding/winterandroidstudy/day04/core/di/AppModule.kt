@@ -1,4 +1,4 @@
-package com.surivalcoding.winterandroidstudy.day04.di
+package com.surivalcoding.winterandroidstudy.day04.core.di
 
 import org.koin.dsl.module
 

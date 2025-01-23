@@ -2,8 +2,8 @@ package com.surivalcoding.winterandroidstudy.day06.presentation
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.surivalcoding.winterandroidstudy.data.repository.MockRecipeRepositoryImpl
-import com.surivalcoding.winterandroidstudy.data.repository.RecipeRepository
+import com.surivalcoding.winterandroidstudy.day04.data.repository.MockRecipeRepositoryImpl
+import com.surivalcoding.winterandroidstudy.day04.domain.repository.RecipeRepository
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
@@ -63,7 +63,7 @@ class SearchRecipesViewModel(
         }
 
         viewModelScope.launch {
-            val recipes = recipeRepository.getSavedRecipes()
+            val recipes = recipeRepository.getAllRecipes()
             _state.update {
                 it.copy(
                     recipes = recipes,

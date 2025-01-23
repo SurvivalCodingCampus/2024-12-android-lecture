@@ -1,6 +1,6 @@
 package com.surivalcoding.winterandroidstudy.day06.presentation
 
-import com.surivalcoding.winterandroidstudy.data.model.Recipe
+import com.surivalcoding.winterandroidstudy.day04.domain.model.Recipe
 
 data class SearchRecipesState(
     val query: String = "",

@@ -1,23 +1,28 @@
-package com.surivalcoding.winterandroidstudy.data.repository
+package com.surivalcoding.winterandroidstudy.day04.data.repository
 
-import com.surivalcoding.winterandroidstudy.data.model.Recipe
+import com.surivalcoding.winterandroidstudy.day04.domain.model.Recipe
+import com.surivalcoding.winterandroidstudy.day04.domain.repository.RecipeRepository
 
 class MockRecipeRepositoryImpl : RecipeRepository {
-    override suspend fun getSavedRecipes(): List<Recipe> {
+    override suspend fun getAllRecipes(): List<Recipe> {
         return listOf(
             Recipe(
+                id = 1,
                 title = "Traditional spare ribs baked",
                 chef = "Chef John"
             ),
             Recipe(
+                id = 2,
                 title = "Spice roasted chicken with flavored rice",
                 chef = "Mark Kelvin"
             ),
             Recipe(
+                id = 3,
                 title = "Spicy fried rice mix chicken bali",
                 chef = "Spicy Nelly"
             ),
             Recipe(
+                id = 4,
                 title = "Ttekbokki",
                 chef = "Kim Dahee"
             ),

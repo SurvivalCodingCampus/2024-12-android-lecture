@@ -1,8 +1,12 @@
 package com.surivalcoding.winterandroidstudy.day04.presentation.saved_recipes
 
 import androidx.compose.foundation.layout.PaddingValues
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.material3.Button
+import androidx.compose.material3.Card
 import androidx.compose.material3.CenterAlignedTopAppBar
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Scaffold
@@ -11,13 +15,14 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.surivalcoding.winterandroidstudy.data.model.Recipe
+import com.surivalcoding.winterandroidstudy.day04.domain.model.Recipe
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun SavedRecipesScreen(
     modifier: Modifier = Modifier,
     savedRecipes: List<Recipe>,
+    onBookmarkClick: (Recipe) -> Unit = {},
 ) {
     Scaffold(
         topBar = {
@@ -36,7 +41,18 @@ fun SavedRecipesScreen(
             ),
         ) {
             items(savedRecipes.size) { index ->
-                Text(savedRecipes[index].title)
+                Card(
+                    modifier = Modifier.fillMaxWidth()
+                ) {
+                    Row {
+                        Text(savedRecipes[index].title)
+                        Button(onClick = {
+                            onBookmarkClick(savedRecipes[index])
+                        }) {
+                            Text("삭제")
+                        }
+                    }
+                }
             }
         }
     }

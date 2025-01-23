@@ -23,6 +23,9 @@ class RecipeActivity : ComponentActivity() {
 
                 SavedRecipesScreen(
                     savedRecipes = savedRecipes.value,
+                    onBookmarkClick = {
+                        viewModel.onDeleteBookmark(it)
+                    }
                 )
             }
         }

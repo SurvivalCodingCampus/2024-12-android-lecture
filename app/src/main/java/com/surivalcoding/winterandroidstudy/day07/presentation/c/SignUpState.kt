@@ -1,6 +1,6 @@
 package com.surivalcoding.winterandroidstudy.day07.presentation.c
 
-import com.surivalcoding.winterandroidstudy.data.model.Recipe
+import com.surivalcoding.winterandroidstudy.day04.domain.model.Recipe
 
 data class SignUpState(
     val query: String = "",
