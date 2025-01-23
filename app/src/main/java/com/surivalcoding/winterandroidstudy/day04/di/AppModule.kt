@@ -1,16 +1,20 @@
 package com.surivalcoding.winterandroidstudy.day04.di
 
-import org.koin.dsl.module
+import com.surivalcoding.winterandroidstudy.data.repository.MockRecipeRepositoryImpl
+import com.surivalcoding.winterandroidstudy.data.repository.RecipeRepository
+import dagger.Module
+import dagger.Provides
+import dagger.hilt.InstallIn
+import dagger.hilt.components.SingletonComponent
+import javax.inject.Singleton
 
-val appModule = module {
-    single<String> { "생존코딩" }
+@Module
+@InstallIn(SingletonComponent::class)
+object AppModule {
 
-//    single<RecipeRepository> { MockRecipeRepositoryImpl() }
-
-//    viewModel { SavedRecipesViewModel(
-//        recipeRepository = get()
-//    ) }
-
-    // get() 무지성으로 박아주는 매직
-//    viewModelOf(::SavedRecipesViewModel)
+    @Singleton
+    @Provides
+    fun provideRecipeRepository(): RecipeRepository {
+        return MockRecipeRepositoryImpl()
+    }
 }

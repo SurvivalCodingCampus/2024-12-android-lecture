@@ -4,12 +4,15 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.surivalcoding.winterandroidstudy.data.model.Recipe
 import com.surivalcoding.winterandroidstudy.data.repository.RecipeRepository
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
-class SavedRecipesViewModel(
+@HiltViewModel
+class SavedRecipesViewModel @Inject constructor(
     private val recipeRepository: RecipeRepository,
 ) : ViewModel() {
 
