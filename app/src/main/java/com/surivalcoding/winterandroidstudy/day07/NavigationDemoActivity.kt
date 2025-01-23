@@ -18,6 +18,7 @@ class NavigationDemoActivity : ComponentActivity() {
 
                 NavigationRoot(
                     navController = navController,
+                    isLogin = false,
                 )
             }
         }
