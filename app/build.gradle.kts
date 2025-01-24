@@ -37,6 +37,21 @@ android {
     }
     buildFeatures {
         compose = true
+        buildConfig = true
+    }
+
+    flavorDimensions += listOf("environment")
+    productFlavors {
+        create("dev") {
+            dimension = "environment"
+            applicationIdSuffix = ".dev"
+            versionNameSuffix = "-dev"
+            buildConfigField("String", "title", "\"생존코딩\"")
+        }
+        create("prod") {
+            dimension = "environment"
+            buildConfigField("String", "title", "\"survival\"")
+        }
     }
 }
 
@@ -79,6 +94,5 @@ dependencies {
     implementation("io.insert-koin:koin-android:$koin_version")
     implementation("io.insert-koin:koin-compose-viewmodel:$koin_version")
     implementation("io.insert-koin:koin-compose-viewmodel-navigation:$koin_version")
-
 
 }

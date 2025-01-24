@@ -30,7 +30,19 @@ class SignUpViewModel(
         println(id)
     }
 
-    fun fetchRecipes(query: String) {
+    fun onAction(action: SignUpAction) {
+        when (action) {
+            is SignUpAction.InputEmail -> TODO()
+            is SignUpAction.InputName -> {
+                fetchAllRecipes()
+            }
+
+            SignUpAction.OnClickSignUp -> TODO()
+            SignUpAction.OnClickTerms -> TODO()
+        }
+    }
+
+    private fun fetchRecipes(query: String) {
         if (query.isBlank()) {
             _state.update {
                 it.copy(
@@ -66,7 +78,7 @@ class SignUpViewModel(
         }
     }
 
-    fun fetchAllRecipes() {
+    private fun fetchAllRecipes() {
         _state.update {
             it.copy(
                 isLoading = true

@@ -15,6 +15,7 @@ import androidx.compose.ui.unit.sp
 fun SignUpScreen(
     modifier: Modifier = Modifier,
     state: SignUpState,
+    onAction: (SignUpAction) -> Unit = {},
 ) {
     Scaffold { innerPadding ->
         Box(
