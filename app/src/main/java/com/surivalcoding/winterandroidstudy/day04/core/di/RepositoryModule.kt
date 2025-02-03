@@ -7,6 +7,7 @@ import org.koin.dsl.module
 
 val repositoryModule = module {
     single<RecipeRepository> { MockRecipeRepositoryImpl() }
+//    single<RecipeRepository> { MockNetworkErrorRecipeRepositoryImpl() }
 
     single<BookmarkRepository> {
         object : BookmarkRepository {
