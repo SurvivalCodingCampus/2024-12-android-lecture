@@ -21,6 +21,7 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.unit.dp
 import com.surivalcoding.winterandroidstudy.day04.domain.model.Recipe
 import org.koin.compose.viewmodel.koinViewModel
@@ -45,6 +46,7 @@ fun SavedRecipesScreenRoot(
                         actionLabel = "실행 취소",
                     )
                 }
+
                 is SavedRecipesEvent.ShowSnackbar -> {
                     snackbarHostState.showSnackbar(
                         message = event.message,
@@ -94,13 +96,18 @@ fun SavedRecipesScreen(
         ) {
             items(savedRecipes.size) { index ->
                 Card(
-                    modifier = Modifier.fillMaxWidth()
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .testTag("card")
                 ) {
                     Row {
                         Text(savedRecipes[index].title)
-                        Button(onClick = {
-                            onBookmarkClick(savedRecipes[index])
-                        }) {
+                        Button(
+                            modifier = Modifier.testTag("button_$index"),
+                            onClick = {
+                                onBookmarkClick(savedRecipes[index])
+                            }
+                        ) {
                             Text("삭제")
                         }
                     }

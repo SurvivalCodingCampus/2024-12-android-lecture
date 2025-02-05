@@ -3,6 +3,7 @@ package com.surivalcoding.winterandroidstudy.day04.core.di
 import org.koin.dsl.module
 
 val appModule = module {
+
     single<String> { "생존코딩" }
 
 //    single<RecipeRepository> { MockRecipeRepositoryImpl() }
