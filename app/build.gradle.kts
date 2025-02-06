@@ -106,4 +106,6 @@ dependencies {
     // See Add the KSP plugin to your project
     ksp("androidx.room:room-compiler:$room_version")
 
+    // data store
+    implementation("androidx.datastore:datastore-preferences:1.1.2")
 }

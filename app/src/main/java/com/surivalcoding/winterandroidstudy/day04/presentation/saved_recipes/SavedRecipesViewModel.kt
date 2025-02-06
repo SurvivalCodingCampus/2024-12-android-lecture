@@ -6,6 +6,7 @@ import com.surivalcoding.winterandroidstudy.day04.core.util.Result
 import com.surivalcoding.winterandroidstudy.day04.domain.model.Recipe
 import com.surivalcoding.winterandroidstudy.day04.domain.use_case.DeleteBookmarkUseCase
 import com.surivalcoding.winterandroidstudy.day04.domain.use_case.GetSavedRecipesUseCase
+import com.surivalcoding.winterandroidstudy.day09_room.data.repository.UserRepositoryImpl
 import com.surivalcoding.winterandroidstudy.day09_room.domain.model.User
 import com.surivalcoding.winterandroidstudy.day09_room.domain.repository.UserRepository
 import kotlinx.coroutines.flow.MutableSharedFlow
@@ -28,8 +29,9 @@ class SavedRecipesViewModel(
 
     init {
         viewModelScope.launch {
-            userRepository.upsert(User(name = "junsuk", age = 10))
-            println(userRepository.getAll())
+            (userRepository as UserRepositoryImpl).insertUser2(User(name = "junsuk", age = 10))
+//            userRepository.upsert(User(name = "junsuk", age = 10))
+//            println(userRepository.getAll())
 
             when (val result = getSavedRecipesUseCase.execute()) {
                 is Result.Error -> {

@@ -1,5 +1,9 @@
 package com.surivalcoding.winterandroidstudy.day09_room.data.repository
 
+import androidx.datastore.core.DataStore
+import androidx.datastore.preferences.core.Preferences
+import androidx.datastore.preferences.core.edit
+import androidx.datastore.preferences.core.stringPreferencesKey
 import com.surivalcoding.winterandroidstudy.day09_room.data.local.dao.UserDao
 import com.surivalcoding.winterandroidstudy.day09_room.data.local.entity.UserEntity
 import com.surivalcoding.winterandroidstudy.day09_room.domain.model.User
@@ -9,7 +13,17 @@ import kotlinx.coroutines.flow.map
 
 class UserRepositoryImpl(
     private val userDao: UserDao,
+    private val dataStore: DataStore<Preferences>,
 ) : UserRepository {
+
+    private val EXAMPLE_COUNTER = stringPreferencesKey("user_name")
+
+
+    suspend fun insertUser2(user: User) {
+        dataStore.edit { settings ->
+            settings[EXAMPLE_COUNTER] = user.name
+        }
+    }
 
     override suspend fun getAll(): List<User> {
         return userDao.getAll().map { entity ->
