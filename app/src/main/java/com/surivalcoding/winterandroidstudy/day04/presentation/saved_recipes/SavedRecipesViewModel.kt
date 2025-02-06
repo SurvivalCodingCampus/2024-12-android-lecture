@@ -6,6 +6,8 @@ import com.surivalcoding.winterandroidstudy.day04.core.util.Result
 import com.surivalcoding.winterandroidstudy.day04.domain.model.Recipe
 import com.surivalcoding.winterandroidstudy.day04.domain.use_case.DeleteBookmarkUseCase
 import com.surivalcoding.winterandroidstudy.day04.domain.use_case.GetSavedRecipesUseCase
+import com.surivalcoding.winterandroidstudy.day09_room.domain.model.User
+import com.surivalcoding.winterandroidstudy.day09_room.domain.repository.UserRepository
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asSharedFlow
@@ -15,6 +17,7 @@ import kotlinx.coroutines.launch
 class SavedRecipesViewModel(
     private val getSavedRecipesUseCase: GetSavedRecipesUseCase,
     private val deleteBookmarkUseCase: DeleteBookmarkUseCase,
+    private val userRepository: UserRepository,
 ) : ViewModel() {
 
     private val _savedRecipes = MutableStateFlow<List<Recipe>>(emptyList())
@@ -25,6 +28,9 @@ class SavedRecipesViewModel(
 
     init {
         viewModelScope.launch {
+            userRepository.upsert(User(name = "junsuk", age = 10))
+            println(userRepository.getAll())
+
             when (val result = getSavedRecipesUseCase.execute()) {
                 is Result.Error -> {
                     println(result.message)

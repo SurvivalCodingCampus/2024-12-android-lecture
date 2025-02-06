@@ -12,7 +12,6 @@ class RecipeActivity : ComponentActivity() {
 
 //        val viewModel: SavedRecipesViewModel by viewModels()
 
-
         setContent {
             SavedRecipesScreenRoot()
         }

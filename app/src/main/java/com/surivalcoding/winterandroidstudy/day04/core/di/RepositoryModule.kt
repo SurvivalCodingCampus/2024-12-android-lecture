@@ -3,9 +3,13 @@ package com.surivalcoding.winterandroidstudy.day04.core.di
 import com.surivalcoding.winterandroidstudy.day04.data.repository.MockRecipeRepositoryImpl
 import com.surivalcoding.winterandroidstudy.day04.domain.repository.BookmarkRepository
 import com.surivalcoding.winterandroidstudy.day04.domain.repository.RecipeRepository
+import com.surivalcoding.winterandroidstudy.day09_room.data.repository.UserRepositoryImpl
+import com.surivalcoding.winterandroidstudy.day09_room.domain.repository.UserRepository
 import org.koin.dsl.module
 
 val repositoryModule = module {
+    single<UserRepository> { UserRepositoryImpl(get()) }
+
     single<RecipeRepository> { MockRecipeRepositoryImpl() }
 //    single<RecipeRepository> { MockNetworkErrorRecipeRepositoryImpl() }
 

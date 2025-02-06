@@ -3,6 +3,7 @@ plugins {
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.compose)
     kotlin("plugin.serialization") version "2.1.0"
+    id("com.google.devtools.ksp")
 }
 
 android {
@@ -94,5 +95,15 @@ dependencies {
     implementation("io.insert-koin:koin-android:$koin_version")
     implementation("io.insert-koin:koin-compose-viewmodel:$koin_version")
     implementation("io.insert-koin:koin-compose-viewmodel-navigation:$koin_version")
+
+    // Room
+    val room_version = "2.6.1"
+
+    implementation("androidx.room:room-runtime:$room_version")
+    implementation("androidx.room:room-ktx:$room_version")
+
+    // If this project uses any Kotlin source, use Kotlin Symbol Processing (KSP)
+    // See Add the KSP plugin to your project
+    ksp("androidx.room:room-compiler:$room_version")
 
 }
