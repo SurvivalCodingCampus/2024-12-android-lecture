@@ -33,7 +33,7 @@ class BroadcastActivity : ComponentActivity() {
             applicationContext,
             myBroadcastReceiver,
             filter,
-            ContextCompat.RECEIVER_NOT_EXPORTED,
+            ContextCompat.RECEIVER_EXPORTED,
         )
 
         enableEdgeToEdge()
