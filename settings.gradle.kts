@@ -19,5 +19,10 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "Winter Android Study"
+rootProject.name = "My Project Name".replace(" ", "-")
 include(":app")
+include(":domain")
+include(":data")
+
+// 이거 하면 자동 완성 됨
+enableFeaturePreview("TYPESAFE_PROJECT_ACCESSORS")
