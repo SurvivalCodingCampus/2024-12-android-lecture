@@ -19,7 +19,7 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "Winter-Kotiln-Study"
+rootProject.name = "Winter-Android-Study"
 include(":app")
 include(":domain")
 include(":data")
