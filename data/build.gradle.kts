@@ -42,4 +42,9 @@ dependencies {
     androidTestImplementation(libs.androidx.espresso.core)
 
     implementation(projects.domain)
+
+    // Koin
+    val koin_version = "4.0.1"
+    implementation("io.insert-koin:koin-core:$koin_version")
+    implementation("io.insert-koin:koin-android:$koin_version")
 }

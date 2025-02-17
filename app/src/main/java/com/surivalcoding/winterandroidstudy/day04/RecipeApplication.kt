@@ -10,6 +10,7 @@ import com.surivalcoding.winterandroidstudy.day04.core.di.repositoryModule
 import com.surivalcoding.winterandroidstudy.day04.core.di.useCaseModule
 import com.surivalcoding.winterandroidstudy.day04.core.di.viewModelModule
 import com.surivalcoding.winterandroidstudy.day09_room.di.databaseModule
+import com.suwonsmartapp.di.dataModule
 import org.koin.android.ext.koin.androidContext
 import org.koin.android.ext.koin.androidLogger
 import org.koin.core.context.startKoin
@@ -31,6 +32,7 @@ class RecipeApplication : Application() {
                 viewModelModule,
                 useCaseModule,
                 databaseModule,
+                dataModule,
             )
         }
     }
