@@ -19,7 +19,7 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "My Project Name".replace(" ", "-")
+rootProject.name = "Winter-Kotiln-Study"
 include(":app")
 include(":domain")
 include(":data")
