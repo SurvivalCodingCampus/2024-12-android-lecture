@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+
+  <script>
+    function sendData() {
+      const data = {
+        name: "홍길동",
+        age: 20
+      }
+
+      ChannelName.sendMessage(JSON.stringify(data));
+    }
+
+    function showAlert() {
+      alert("그지같은 Alert");
+    }
+  </script>
+</head>
+
+<body>
+  <button onclick="sendData()">데이터 전송</button>
+
+  <button onclick="showAlert()">그지같은 Alert</button>
+</body>
+
+</html>

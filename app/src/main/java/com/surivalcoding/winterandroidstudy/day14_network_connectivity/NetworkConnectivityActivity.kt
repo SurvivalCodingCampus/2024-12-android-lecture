@@ -1,6 +1,7 @@
 package com.surivalcoding.winterandroidstudy.day14_network_connectivity
 
 import android.os.Bundle
+import android.webkit.WebView
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
@@ -17,6 +18,9 @@ import org.koin.compose.viewmodel.koinViewModel
 class NetworkConnectivityActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        val textView = WebView(this)
+
         enableEdgeToEdge()
         setContent {
             WinterKotilnStudyTheme {

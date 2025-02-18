@@ -4,4 +4,5 @@
     <string name="title_activity_provider">ProviderActivity</string>
     <string name="title_activity_service">ServiceActivity</string>
     <string name="title_activity_network_connectivity">NetworkConnectivityActivity</string>
+    <string name="title_activity_web_view">WebViewActivity</string>
 </resources>
